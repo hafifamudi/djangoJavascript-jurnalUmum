@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+
+{%load static%}
+
+{%block javascript%}
+<script src="{%static 'jurnal.js'%}"></script>
+{%endblock%}
+
+{%block content%}
+<button type="button" data-url="{%url 'jurnal-buat'%}" style="color: white;margin-left: 21%;margin-bottom: 2%;" class="js-buat-jurnal">Tambah Jurnal</button>
+<table class="rwd-table animated fadeIn" id="jurnal-table">
+    <thead>
+        <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Keterangan</th>
+                    <th class="centerPos">Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+          {%include "list_jurnal.html"%}
+    </tbody>
+   
+</table>
+
+<div class="modal fade" tabindex="-1" role="dialog"id="modal-jurnal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        
+    </div>
+  </div>
+  
+  
+{%endblock%}

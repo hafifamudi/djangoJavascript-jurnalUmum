@@ -1,0 +1,63 @@
+{%extends 'base.html'%}
+
+
+
+{%load static%}
+
+{%block javascript%}
+<script src="{%static 'jurnal.js'%}"></script>
+{%endblock%}
+
+{%block content%}
+<button type="button" href="{% url 'jurnalTransaksi:simpanTransaksiPage' jurnal.id %}" style="color: white;margin-left: 21%;margin-bottom: 2%;" class="js-buat-jurnalTransaksi">Tambah Jurnal</button>
+<table class="rwd-table  animated fadeIn" id="jurnal-transaksi">
+    <thead>
+        <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Keterangan</th>
+                    <th>Debit</th>
+                    <th>Kredit</th>
+                    <th>Kas / Sisa </th>
+                    <th class="centerPos">Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+            {%for result in daftar_hasil%}
+            <td>{{ forloop.counter }}</td>
+            <td>{{ result.tanggalJurnal }}</td>
+            <td>{{ result.uraianJurnal }}</td>
+            <td>{{ result.debt }}</td>
+            <td>{{ result.kredit }}</td>
+            <td></td>
+            <td class="centerPos"><button style="color: red;"   class="js-delete-jurnal2" href="{%url 'jurnalTransaksi:hapusJurnal' idJurnal=jurnal.id idLama=result.id %}">Hapus</button> | <button  style="color: green;"  class="js-update-jurnal" href="{%url 'jurnalTransaksi:ubahJurnal' idJurnal=jurnal.id idLama=result.id%}">Ubah</button></td>
+            </tr>
+            {%empty%}
+            <tr>
+                <td colspan="7" class="text-center bg-warning" style="color: black;">Tidak Ada Jurnal</td>
+            </tr>
+            {%endfor%}
+            <tr>
+              <td colspan="3" class="centerPos">Total</td>
+              <td>{{ total_debt }}</td>
+              <td>{{ total_kredit }}</td>
+              <td>{{ total_kas }}</td>
+            </tr> 
+           
+
+    </tbody>
+   
+</table>
+
+<button class="indexTransaksi" style="color: white;" href="{%url 'index'%}">Kembali Ke Jurnal</button>
+  
+<div class="modal fade" tabindex="-1" role="dialog"id="modal-jurnal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      {%include 'deleteJurnalTransaksi.html'%}
+    </div>
+  </div>
+  
+{%endblock%}
+

@@ -1,0 +1,12 @@
+    <tr>
+    {%for jurnal in jurnals%}
+    <td>{{ forloop.counter }}</td>
+    <td>{{ jurnal.nama }}</td>
+    <td>{{ jurnal.keterangan }}</td>
+    <td class="centerPos"><button style="color: red;"   class="js-delete-jurnal" data-url="{%url 'hapusJurnal' jurnal.id%}">Hapus</button> | <button  style="color: green;"  class="js-update-jurnal2" data-url="{%url 'ubahJurnal' jurnal.id%}">Ubah</button> | <button href="{%url 'jurnalTransaksi:indexTransaksi' idJurnal=jurnal.pk%}" style="color: yellow;" onclick="linkDetail()" class="jurnalDaftar">Detail</button></td>
+    </tr>
+    {%empty%}
+    <tr>
+        <td colspan="7" class="text-center bg-warning" style="color: black;">Tidak Ada Jurnal</td>
+    </tr>
+    {%endfor%}

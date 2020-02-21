@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+{% load widget_tweaks %}
+{% load static%}
+{%block content%}
+
+    <div class="row formJurnalTransaksi">
+        <div class="col-md-7 text-center">
+          <form method="POST" class="animated bounce" action="{%url 'jurnalTransaksi:updateJurnal' idJurnal=jurnal.id%}">
+            {%csrf_token%}
+            {{ form.id }}
+            <div class="form-group">
+              <label for="exampleInputEmail1" style="color: white;">Tanggal</label>
+              {%render_field form.tanggalJurnal  class="form-control"%}
+              <small id="tanggalJurnal" class="form-text text-muted">Masukan Tanggal Transaksi Jurnal</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1" style="color: white;">Uraian</label>
+              {%render_field form.uraianJurnal class="form-control"%}
+              <small id="uraianJurnal" class="form-text text-muted">Masukan Uraian Transaksi Jurnal</small>
+            </div>
+            <div class="form-group">
+              <label class="form-check-label" for="exampleCheck1" style="color: white;">Kredit</label>
+              {%render_field form.debt class="form-control"%}
+              <small id="debt" class="form-text text-muted">Masukan Debit</small>
+            </div>
+            <div class="form-group">
+              <label class="form-check-label" for="exampleCheck1" style="color: white;">Debit</label>
+              {%render_field form.kredit class="form-control"%}
+              <small id="kredit" class="form-text text-muted">Masukan Kredit</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          
+        </div>
+      </div>    
+
+
+{%endblock%}

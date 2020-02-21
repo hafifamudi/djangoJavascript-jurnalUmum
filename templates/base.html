@@ -1,0 +1,47 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jurnal Penyusuain</title>
+    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="{% static "style.css"%}">
+    <link rel="stylesheet" href="{% static "bootstrap.css"%}">
+    <link rel="stylesheet" href="{% static "node_modules/animate.css/animate.css"%}">
+    
+</head>
+<body>
+    <div class="container">
+        <nav>
+          <h1 class="neon">JURNAL UMUM</h1>
+        </nav>
+        <br>
+        <main>
+        <!-- block untuk content -->
+         {%block content%}
+
+         {%endblock%}            
+        </main>
+    </div>
+    <!-- Semua dependecies Library Javascript -->
+    <script src="{%static "jquery.js"%}"></script>
+    <script src="{%static "bootstrap.min.js"%}"></script>
+    <script src="{%static "popper.js"%}"></script>
+    <script src="{%static "bootbox.js"%}"></script>
+    <script src="{%static "bootbox.locales.min.js"%}"></script>
+    <script>
+        function linkDetail(){
+            var btn = $(".jurnalDaftar").attr('href');
+            if(btn){
+                location.href = btn;
+            }
+        }
+    </script>
+    <!-- block untuk Javascript -->
+    {%block javascript%}
+
+    {%endblock%}    
+</body>
+</html>

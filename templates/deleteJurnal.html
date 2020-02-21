@@ -1,0 +1,17 @@
+<form method="POST" action="{% url 'hapusJurnal' jurnal.id%}" class="js-jurnal-delete-form">
+    {%csrf_token%}
+    <div class="modal-header">
+        <h5 class="modal-title">Hapus Jurnal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Yakin untuk menghapus Jurnal <strong>{{ jurnal.nama }} ?</strong></p>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-primary">Hapus Jurnal</button>
+      </div>
+    </div>
+</form>
