@@ -16,14 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from jurnalApp import views
-from django.conf.urls import url,include
+from django.conf.urls import include
 urlpatterns = [
     #Jurnal Routing
     path('admin/', admin.site.urls),
     path("",views.daftar_jurnal,name="index"),
     path("buatJurnal",views.buatJurnal,name="jurnal-buat"),
-    url(r"^ubahJurnal/(?P<pk>\d+)/update/$",views.ubahJurnal,name="ubahJurnal"),
-    url(r"^hapusJurnal/(?P<pk>\d+)/delete/$",views.hapusJurnal,name="hapusJurnal"),
+    path("ubahJurnal/<int:pk>/update/",views.ubahJurnal,name="ubahJurnal"),
+    path("hapusJurnal/<int:pk>/delete/",views.hapusJurnal,name="hapusJurnal"),
     #Transaksi Jurnal Routing
-    url(r'^transaksi/',include(('jurnalTransaksi.urls','jurnalTransaksi'),namespace='jurnalTransaksi'))
+    path('transaksi/',include(('jurnalTransaksi.urls','jurnalTransaksi'),namespace='jurnalTransaksi'))
 ]
